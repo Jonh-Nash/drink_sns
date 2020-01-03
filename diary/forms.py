@@ -29,9 +29,9 @@ class InquiryForm(forms.Form):
         title = self.cleaned_data['title']
         message = self.cleaned_data['message']
 
-        subject = 'お問合せ{}'.format(title)
+        subject = 'お問合せ {}'.format(title)
         message = '送信者名: {0}\nメールアドレス: {1}\nメッセージ:\n{2}'.format(name, email, message)
-        form_email = 'admin@example.com'
+        from_email = 'admin@example.com'
         to_list = [
             'test@example.com'
         ]
@@ -39,5 +39,5 @@ class InquiryForm(forms.Form):
             email
         ]
 
-        message = EmailMessage(subject=subject, body=message, form_email=form_email, to=to_list, cc=cc_list)
+        message = EmailMessage(subject=subject, body=message, from_email=from_email, to=to_list, cc=cc_list)
         message.send()
