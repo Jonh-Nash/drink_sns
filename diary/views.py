@@ -23,7 +23,7 @@ class InquiryView(generic.FormView):
         logger.info('inquiry sent by {}'.format(form.cleaned_data['name']))
         return super().form_valid(form)
 
-    class DiaryListView(LoginRequiredMixin, generic.ListView):
+class DiaryListView(LoginRequiredMixin, generic.ListView):
         model = Diary
         template_name = 'diary_list.html'
 
