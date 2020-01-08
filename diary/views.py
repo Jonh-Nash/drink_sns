@@ -32,5 +32,10 @@ class DiaryListView(LoginRequiredMixin, generic.ListView):
             diaries = Diary.objects.filter(user=self.request.user).order_by('created_at')
             return diaries
 
+class DiaryDetailView(LoginRequiredMixin, generic.ListView):
+    model = Diary
+    template_name = 'diary_detail.html'
+    pk_url_kwarg = 'id'
+
 
 
