@@ -24,18 +24,17 @@ class InquiryView(generic.FormView):
         return super().form_valid(form)
 
 class DiaryListView(LoginRequiredMixin, generic.ListView):
-        model = Diary
-        template_name = 'diary_list.html'
-        paginate_by = 5
+    model = Diary
+    template_name = 'diary_list.html'
+    paginate_by = 5
 
-        def get_queryset(self):
-            diaries = Diary.objects.filter(user=self.request.user).order_by('created_at')
-            return diaries
+    def get_queryset(self):
+        diaries = Diary.objects.filter(user=self.request.user).order_by('created_at')
+        return diaries
 
-class DiaryDetailView(LoginRequiredMixin, generic.ListView):
+class DiaryDetailView(LoginRequiredMixin, generic.DetailView):
     model = Diary
     template_name = 'diary_detail.html'
-    pk_url_kwarg = 'id'
 
 
 
