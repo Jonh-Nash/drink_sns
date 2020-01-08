@@ -42,15 +42,18 @@
               </ul>
               <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
+                <li class="nav-item" {% block active_diary_list %}{% endblock %}>
+                    <a class="nav-link" href="{% url 'diary:diary_list' %}">あなたの投稿</a>
+                </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
+                  <a class="nav-link" href="{% url 'account_logout' %}">ログアウト</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
                   <a class="nav-link {% block active_signup %}{% endblock %}" href="{% url 'account_signup' %}">Sign Up</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
+                  <a class="nav-link" href="{% url 'account_login' %}">ログイン</a>
                 </li>
                 {% endif %}
               </ul>
