@@ -21,7 +21,7 @@
                     <div class="post-preview border-right border-left">
                         <a href="{% url 'diary:diary_detail' diary.pk %}">
                           <h3 class="post-subtitle">
-                            {{ diary.title }}
+                            {{ diary.user }}
                           </h3>
                           <h3 class="post-subtitle">
                             {{ diary.content|truncatechars:20 }}
