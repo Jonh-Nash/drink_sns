@@ -6,7 +6,6 @@
 {% block active_diary_list %}active{% endblock %}
 
 {% block head %}
-<link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block contents %}
@@ -15,10 +14,10 @@
         <div class="my-div-style w-100">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="clearfix">
-                    <a class="btn btn-primary float-right" href="{% url 'diary:diary_create' %}">新規作成</a>
+                    <a class="btn btn-info float-right" href="{% url 'diary:diary_create' %}">新規作成</a>
                 </div>
                 {% for diary in diary_list %}
-                    <div class="post-preview border-right border-left">
+                    <div class="post-preview border">
                         <a href="{% url 'diary:diary_detail' diary.pk %}">
                           <h3 class="post-subtitle">
                             {{ diary.user }}
@@ -28,10 +27,12 @@
                           </h3>
                         </a>
                         <p class="post-meta">{{ diary.created_at }}</p>
+                        <a href="#" class="btn btn-primary" role="button" aria-pressed="true">行きたい！</a>
+
                     </div>
                     <hr>
                 {% empty %}
-                    <p>日記がありません。</p>
+                    <p>投稿がありません。</p>
                 {% endfor %}
 
                 <!-- ページネーション処理 -->
