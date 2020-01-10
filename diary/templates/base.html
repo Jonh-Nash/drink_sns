@@ -40,6 +40,18 @@
                   <a class="nav-link" href="{% url 'diary:inquiry' %}">お問合せ</a>
                 </li>
               </ul>
+                {% if user.is_authenticated %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item {% block active_alllist %}{% endblock %}">
+                        <a class="nav-link" href="{% url 'diary:diary_alllist' %}">みんなの投稿</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item {% block active_map %}{% endblock %}">
+                        <a class="nav-link" href="#">マップ</a>
+                    </li>
+                </ul>
+                {% endif %}
               <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
                 <li class="nav-item" {% block active_diary_list %}{% endblock %}>

@@ -85,5 +85,11 @@ class DiaryDeleteView(LoginRequiredMixin, generic.DeleteView):
         return super().delete(request, *args, **kwargs)
 
 
+class DiaryAlllistView(LoginRequiredMixin, generic.ListView):
+    model = Diary
+    template_name = 'diary_list.html'
+    paginate_by = 5
+    diaries = Diary.objects.get()
+
 
 
