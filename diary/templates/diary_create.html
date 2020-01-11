@@ -9,6 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="my-div-style w-100">
+            <a href="{{request.META.HTTP_REFERER}}" class="btn btn-link btn-xs">←戻る</a>
             <form method="POST" enctype='multipart/form-data'>
                 {% csrf_token %}
                 <table class="table">
