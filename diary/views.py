@@ -89,7 +89,7 @@ class DiaryAlllistView(LoginRequiredMixin, generic.ListView):
     model = Diary
     template_name = 'diary_list.html'
     paginate_by = 5
-    diaries = Diary.objects.get()
+    diaries = Diary.objects.get
 
 
 
