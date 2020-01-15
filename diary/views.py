@@ -40,7 +40,7 @@ class DiaryCreateView(LoginRequiredMixin, generic.CreateView):
     model = Diary
     template_name = 'diary_create.html'
     form_class = DiaryCreateForm
-    success_url = reverse_lazy('diary:diary_list')
+    success_url = reverse_lazy('diary:diary_alllist')
 
     def form_valid(self, form):
         diary = form.save(commit=False)
@@ -90,6 +90,7 @@ class DiaryAlllistView(LoginRequiredMixin, generic.ListView):
     template_name = 'diary_list.html'
     paginate_by = 5
     diaries = Diary.objects.get
+
 
 
 
