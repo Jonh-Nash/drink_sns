@@ -1,3 +1,4 @@
+import bootstrap_datepicker_plus as datetimepicker
 from django import forms
 from django.core.mail import EmailMessage
 from .models import Diary
@@ -46,7 +47,16 @@ class InquiryForm(forms.Form):
 class DiaryCreateForm(forms.ModelForm):
     class Meta:
         model = Diary
-        fields = ('title', 'schedule', 'restaurant', 'number',  'photo1', 'photo2', 'photo3', )
+        fields = ('title', 'schedule', 'restaurant', 'station',  'number',  'photo1', 'photo2', 'photo3', )
+        widgets = {
+            'schedule': datetimepicker.DateTimePickerInput(
+                format='%Y-%m-%d %H:%M:%S',
+                options={
+                    'locale': 'ja',
+                    'dayViewHeaderFormat': 'YYYY年 MMMM',
+                }
+            ),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
