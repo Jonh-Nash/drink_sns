@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}あなたの投稿 | Drink SNS{% endblock %}
+{% block title %}
+{% if 'alllist' in request.get_full_path %}
+みんなの投稿
+{% else %}
+{{request.user}}の投稿
+{% endif %}
+Drink SNS{% endblock %}
 
 {% block active_diary_list %}active{% endblock %}
 
@@ -27,13 +33,14 @@
                             {{ diary.user }}
                           </h3>
                         <div class="card-body">
+                            <h4>{{ diary.schedule }} ～</h4>
                             <a href="{% url 'diary:diary_detail' diary.pk %}">
                                 <h3 class="card-subtitle">
-                                    {{ diary.content|truncatechars:20 }}
+                                    {{ diary.title|truncatechars:20 }}
                                 </h3>
                             </a>
                             <p class="blockquote-footer">{{ diary.created_at }}投稿</p>
-                            <a href="#" class="btn btn-primary">行きたい！</a>
+                            <a href="#" class="btn btn-primary">行きたい！ {{ diary.want }}</a>
                         </div>
                     </div>
                     <hr>

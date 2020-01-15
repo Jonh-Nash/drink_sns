@@ -19,6 +19,8 @@
             </div>
         </div>
 
+        <hr>
+
         <div class="row">
             <div class="col-3">
                 <strong>タイトル</strong>
@@ -28,14 +30,49 @@
             </div>
         </div>
 
+
         <hr>
 
         <div class="row">
             <div class="col-3">
-                <strong>本文</strong>
+                <strong>予定日</strong>
             </div>
             <div class="col-9">
-                {{ object.content|linebreaksbr }}
+                {{ object.schedule }}
+            </div>
+        </div>
+
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>店名</strong>
+            </div>
+            <div class="col-9">
+                {{ object.restaurant }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>最寄り駅</strong>
+            </div>
+            <div class="col-9">
+                {{ object.station }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>参加者</strong>
+            </div>
+            <div class="col-9">
+                {{ object.wantlist }}
             </div>
         </div>
 
@@ -83,9 +120,14 @@
                 {{ object.updated_at }}
             </div>
         </div>
+
+        <hr>
+
         {% if object.user == request.user%}
         <a class="btn btn-success mt-5 mb-3" href="{% url 'diary:diary_update' object.pk %}">編集</a>
         <a class="btn btn-danger mt-5 ml-2 mb-3" href="{% url 'diary:diary_delete' object.pk %}">削除</a>
+        {% else %}
+        <a href="#" class="btn btn-primary">行きたい！ {{ diary.want }}</a>
         {% endif %}
     </div>
 </div>
