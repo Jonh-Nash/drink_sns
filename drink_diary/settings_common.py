@@ -150,4 +150,4 @@ ACCOUNT_LOGOUT_ON_GET = True
 
 MEDIA_URL = '/media/'
 
-LOGIN_REDIRECT_URL = 'diary:diary_list'
+LOGIN_REDIRECT_URL = 'diary:diary_alllist'
