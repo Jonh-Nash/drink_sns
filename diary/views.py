@@ -45,7 +45,7 @@ class DiaryCreateView(LoginRequiredMixin, generic.CreateView):
     model = Diary
     template_name = 'diary_create.html'
     form_class = DiaryCreateForm
-    success_url = reverse_lazy('diary:diary_alllist')
+    success_url = reverse_lazy('diary:diary_list')
 
     def form_valid(self, form):
         diary = form.save(commit=False)
