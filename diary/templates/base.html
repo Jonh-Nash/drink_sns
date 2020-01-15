@@ -46,19 +46,18 @@
                         <a class="nav-link" href="{% url 'diary:diary_alllist' %}">みんなの投稿</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item {% block active_map %}{% endblock %}">
-                        <a class="nav-link" href="#">マップ</a>
-                    </li>
-                </ul>
                 {% endif %}
               <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
                 <li class="nav-item" {% block active_diary_list %}{% endblock %}>
-                    <a class="nav-link" href="{% url 'diary:diary_list' %}">あなたの投稿</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'account_logout' %}">ログアウト</a>
+                    <a class="nav-link dropdown-toggle navDrop" data-toggle="dropdown">{{ user.get_username }}のプロフィール</a>
+                        {% if user.is_authenticated %}
+                            <div class="dropdown-menu dropdown-menu-right" >
+                                <a class="dropdown-item" href="{% url 'diary:diary_list' %}">あなたの投稿</a>
+                                <a class="dropdown-item" href="#">ユーザ情報</a>
+                                <a class="dropdown-item" href="{% url 'account_logout' %}">ログアウト</a>
+                            </div>
+                        {% endif %}
                 </li>
                 {% else %}
                 <li class="nav-item">
