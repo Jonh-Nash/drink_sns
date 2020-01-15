@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'bootstrap_datepicker_plus',
 ]
 
 MIDDLEWARE = [
