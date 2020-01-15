@@ -10,6 +10,8 @@ class Diary(models.Model):
     schedule = models.DateTimeField(verbose_name='予定日', null=True)
     restaurant = models.CharField(verbose_name='店名', null=True, max_length=100)
     number = models.IntegerField(verbose_name='参加人数', default=0)
+    want = models.IntegerField(verbose_name='行きたい', blank=True, null=True, default=0)
+    wanttext = models.TextField(verbose_name='行きたい人達', blank=True, null=True, default='')
     station = models.CharField(verbose_name='最寄り駅', blank=True, null=True, max_length=20)
     photo1 = models.ImageField(verbose_name='写真1', blank=True, null=True)
     photo2 = models.ImageField(verbose_name='写真2', blank=True, null=True)
@@ -22,5 +24,3 @@ class Diary(models.Model):
 
     def __str__(self):
         return self.title
-
-
