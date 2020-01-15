@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load utils %}
 
 {% block title %}投稿詳細 | Drink SNS{% endblock %}
 
@@ -73,6 +74,21 @@
             </div>
             <div class="col-9">
                 {{ object.wantlist }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>開催目途</strong>
+            </div>
+            <div class="col-9">
+                {% if object.number <= object.want %}
+                    開催決定！
+                {% else %}
+                    あと{{ object.number|subtract:object.want }}人で開催です。
+                {% endif %}
             </div>
         </div>
 
