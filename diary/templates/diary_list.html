@@ -6,6 +6,11 @@
     {% for diary in diary_list %}
     <div class="card">
         <h3 class="card-title">
+            {% if diary.user.icon.url != "" %}
+            <img src="{{ diary.user.icon.url }}" style="height: 30px; width: 30px;">
+            {% else %}
+            <img src="/media/img/c0063_6_2.png" style="height: 30px; width: 30px;">
+            {% endif%}
             {{ diary.user }}
         </h3>
         <div class="card-body">

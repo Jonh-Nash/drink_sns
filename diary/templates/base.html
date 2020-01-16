@@ -50,14 +50,22 @@
               <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
                 <li class="nav-item" {% block active_diary_list %}{% endblock %}>
-                    <a class="nav-link dropdown-toggle navDrop" data-toggle="dropdown">{{ user.get_username }}のプロフィール</a>
-                        {% if user.is_authenticated %}
-                            <div class="dropdown-menu dropdown-menu-right" >
-                                <a class="dropdown-item" href="{% url 'diary:diary_list' %}">あなたの投稿</a>
-                                <a class="dropdown-item" href="{% url 'diary:profile' user.pk %}">ユーザ情報</a>
-                                <a class="dropdown-item" href="{% url 'account_logout' %}">ログアウト</a>
-                            </div>
-                        {% endif %}
+                    <a class="nav-link dropdown-toggle navDrop" data-toggle="dropdown">
+                    {% if user.icon.url != "" %}
+                        <img src="{{ user.icon.url }}" style="height: 20px; width: 20px;">
+                    {% else %}
+                        <img src="/media/img/c0063_6_2.png" style="height: 20px; width: 20px;">
+                    {% endif%}
+                    {{ user.get_username }}のプロフィール
+                    </a>
+
+                    {% if user.is_authenticated %}
+                        <div class="dropdown-menu dropdown-menu-right" >
+                            <a class="dropdown-item" href="{% url 'diary:diary_list' %}">あなたの投稿</a>
+                            <a class="dropdown-item" href="{% url 'diary:profile' user.pk %}">ユーザ情報</a>
+                            <a class="dropdown-item" href="{% url 'account_logout' %}">ログアウト</a>
+                        </div>
+                    {% endif %}
                 </li>
                 {% else %}
                 <li class="nav-item">
