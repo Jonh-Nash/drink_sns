@@ -68,7 +68,7 @@ class AccountsUpdateForm(forms.ModelForm):
     class Meta:
         model = models.CustomUser
         fields = (
-            'username', 'email', 'last_name', 'first_name',
+            'icon', 'username', 'email', 'last_name', 'first_name',
         )
 
     def __init__(self, *args, **kwargs):
