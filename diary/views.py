@@ -1,11 +1,14 @@
 import logging
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import redirect, resolve_url
 
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import InquiryForm, DiaryCreateForm
+from .forms import InquiryForm, DiaryCreateForm, AccountsUpdateForm
 from .models import Diary
+from accounts import models
+
 
 logger = logging.getLogger(__name__)
 
@@ -95,6 +98,28 @@ class DiaryAlllistView(LoginRequiredMixin, generic.ListView):
     template_name = 'diary_list.html'
     paginate_by = 5
     diaries = Diary.objects.get
+
+
+class UserOnlyMixin(UserPassesTestMixin):
+    raise_exception = True
+
+    def test_func(self):
+        user = self.request.user
+        return user.pk == self.kwargs['pk'] or user.is_superuser
+
+
+class Profile(UserOnlyMixin, generic.DetailView):
+    model = models.CustomUser
+    template_name = 'pfofile.html'
+
+
+class ProfileUpdate(UserOnlyMixin, generic.UpdateView):
+    model = models.CustomUser
+    form_class = AccountsUpdateForm
+    template_name = 'pfofile_update.html'
+
+    def get_success_url(self):
+        return resolve_url('diary:profile', pk=self.kwargs['pk'])
 
 
 

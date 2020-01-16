@@ -13,4 +13,6 @@ urlpatterns = [
     path('diary-update/<int:pk>', views.DiaryUpdateView.as_view(), name="diary_update"),
     path('diary-delete/<int:pk>', views.DiaryDeleteView.as_view(), name="diary_delete"),
     path('diary-alllist/', views.DiaryAlllistView.as_view(), name="diary_alllist"),
+    path('profile/<int:pk>', views.Profile.as_view(), name='profile'),
+    path('profile/<int:pk>/update/', views.ProfileUpdate.as_view(), name='profile_update'),
 ]

@@ -2,6 +2,7 @@ import bootstrap_datepicker_plus as datetimepicker
 from django import forms
 from django.core.mail import EmailMessage
 from .models import Diary
+from accounts import models
 
 
 class InquiryForm(forms.Form):
@@ -62,4 +63,16 @@ class DiaryCreateForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-content'
+
+class AccountsUpdateForm(forms.ModelForm):
+    class Meta:
+        model = models.CustomUser
+        fields = (
+            'username', 'email', 'last_name', 'first_name',
+        )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
 
