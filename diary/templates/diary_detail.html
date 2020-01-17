@@ -10,7 +10,7 @@
 {% block contents %}
 <div class="container">
     <div class="my-div-style w-100">
-        <a href="{{request.META.HTTP_REFERER}}" class="btn btn-link btn-xs">←戻る</a>
+        <input type="button" value="戻る" onClick="javascript:history.go(-1);">
         <div class="row">
             <div class="col-3">
                 <strong>投稿者</strong>
@@ -73,7 +73,7 @@
                 <strong>参加者</strong>
             </div>
             <div class="col-9">
-                {{ object.wantlist }}
+                {{ object.wanttext }}
             </div>
         </div>
 
@@ -143,7 +143,7 @@
         <a class="btn btn-success mt-5 mb-3" href="{% url 'diary:diary_update' object.pk %}">編集</a>
         <a class="btn btn-danger mt-5 ml-2 mb-3" href="{% url 'diary:diary_delete' object.pk %}">削除</a>
         {% else %}
-        <a href="#" class="btn btn-primary">行きたい！ {{ diary.want }}</a>
+        <a href="{% url 'diary:want' object.pk %}" class="btn btn-primary">行きたい！ {{ diary.want }}</a>
         {% endif %}
     </div>
 </div>
