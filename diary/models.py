@@ -1,3 +1,4 @@
+import re
 from accounts.models import CustomUser
 from django.db import models
 
@@ -21,6 +22,17 @@ class Diary(models.Model):
 
     class Meta:
         verbose_name_plural = 'Diary'
+
+    @property
+    def wantlist(self):
+        wantlist = self.wanttext
+        wantlist = wantlist.split(",")
+        r = re.compile('^[0-9]+$')
+        wantlist = [s for s in wantlist if r.match(s)]
+        wantlist = [CustomUser.objects.get(pk=int(i)) for i in wantlist]
+        wantlist = [i.username for i in wantlist]
+        wantlist = ', '.join(wantlist)
+        return wantlist
 
     def __str__(self):
         return self.title
