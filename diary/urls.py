@@ -15,4 +15,5 @@ urlpatterns = [
     path('diary-alllist/', views.DiaryAlllistView.as_view(), name="diary_alllist"),
     path('profile/<int:pk>', views.Profile.as_view(), name='profile'),
     path('profile/<int:pk>/update/', views.ProfileUpdate.as_view(), name='profile_update'),
+    path('want/<int:pk>', views.wantfunc, name='want'),
 ]

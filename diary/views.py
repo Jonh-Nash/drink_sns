@@ -35,7 +35,7 @@ class DiaryListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
 
     def get_queryset(self):
-        diaries = Diary.objects.filter(user=self.request.user).order_by('created_at')
+        diaries = Diary.objects.filter(user=self.request.user).order_by('schedule')
         return diaries
 
 
@@ -122,5 +122,18 @@ class ProfileUpdate(UserOnlyMixin, generic.UpdateView):
         return resolve_url('diary:profile', pk=self.kwargs['pk'])
 
 
-
+def wantfunc(request, pk):
+    post = Diary.objects.get(pk=pk)
+    post2 = request.user.id
+    post3 = ',' + str(post2) + ','
+    if post3 in post.wanttext:
+        post.want -= 1
+        post.wanttext = post.wanttext.replace(post3, ',')
+        post.save()
+        return redirect('diary:diary_detail', pk=pk)
+    else:
+        post.want += 1
+        post.wanttext = post.wanttext + str(post2) + ','
+        post.save()
+        return redirect('diary:diary_detail', pk=pk)
 
