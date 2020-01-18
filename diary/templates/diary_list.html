@@ -1,5 +1,6 @@
 {% extends 'diary_base.html' %}
-{% block id1 %}
+{% load utils %}
+{% block navcontent %}
     <div class="clearfix">
         <a class="btn btn-info float-right" href="{% url 'diary:diary_create' %}">新規作成</a>
     </div>
@@ -21,6 +22,7 @@
                 </h3>
             </a>
             <p class="blockquote-footer">{{ diary.created_at }}投稿</p>
+            <a href="{% url 'diary:want' diary.pk %}" class="btn {{ diary.wanttext|btnfunc:request.user.pk }}">行きたい！ {{ diary.want }}</a>
             <a class="card-columns">{{ diary.number }}人以上で開催</a>
         </div>
     </div>
@@ -62,10 +64,3 @@
     {% endif %}
 {% endblock %}
 
-{% block id2 %}
-    {% if 'alllist' in request.get_full_path %}
-        map
-    {% else %}
-        iine
-    {% endif %}
-{% endblock %}
