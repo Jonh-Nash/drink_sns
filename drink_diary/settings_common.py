@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'bootstrap_datepicker_plus',
+
+    'django_ses',
 ]
 
 MIDDLEWARE = [
