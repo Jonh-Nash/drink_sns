@@ -17,6 +17,8 @@ class Diary(models.Model):
     photo1 = models.ImageField(verbose_name='写真1', blank=True, null=True)
     photo2 = models.ImageField(verbose_name='写真2', blank=True, null=True)
     photo3 = models.ImageField(verbose_name='写真3', blank=True, null=True)
+    lat = models.DecimalField(verbose_name='緯度', max_digits=8, decimal_places=6, null=True)
+    lng = models.DecimalField(verbose_name='経度', max_digits=9, decimal_places=6, null=True)
     created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
 

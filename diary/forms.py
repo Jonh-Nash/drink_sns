@@ -48,7 +48,7 @@ class InquiryForm(forms.Form):
 class DiaryCreateForm(forms.ModelForm):
     class Meta:
         model = Diary
-        fields = ('title', 'schedule', 'restaurant', 'station',  'number',  'photo1', 'photo2', 'photo3', )
+        fields = ('title', 'schedule', 'restaurant',  'station', 'number', 'photo1', 'photo2', 'photo3', 'lat', 'lng',)
         widgets = {
             'schedule': datetimepicker.DateTimePickerInput(
                 format='%Y-%m-%d %H:%M:%S',
