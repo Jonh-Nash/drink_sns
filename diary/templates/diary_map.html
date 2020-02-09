@@ -1,0 +1,66 @@
+{% extends 'diary_base.html' %}
+{% load utils %}
+{% block navcontent %}
+<script type="text/javascript" src="/static/js/markerclusterer.js"></script>
+
+    <div class="clearfix">
+        <a class="btn btn-info float-right" href="{% url 'diary:diary_create' %}">新規作成</a>
+    </div>
+    <div id="map_all"></div>
+
+<style>
+    #map_all {
+        width: 700px;
+        height: 500px;
+    }
+</style>
+
+<script>
+    function allMap() {
+        var tokyo = { lat: 35.681236, lng: 139.767125};
+        var infoWindow;
+        var marker;
+
+        var map = new google.maps.Map(document.getElementById('map_all'), {
+            zoom: 10,//ズームの調整
+            center: tokyo //上で設定した中心
+        });
+
+        var latlng = [];
+        var marker = [];
+        var infoWindow = [];
+        var i = 0
+
+        {% for diary in diary_list %}
+        var latlng_x = new google.maps.LatLng( '{{ diary.lat }}', '{{ diary.lng }}' ); //objectから緯度経度を取得
+        latlng.push(latlng_x);
+        var marker_x = new google.maps.Marker({
+            position: latlng[i],
+        });
+        marker.push(marker_x);
+        var infoWindow_x = new google.maps.InfoWindow({ // 吹き出しの追加
+            content: '<div class="sample">{{ diary.title }}</div>' // 吹き出しに表示する内容
+        });
+        infoWindow.push(infoWindow_x);
+        markerEvent(i);
+        i++
+        {% endfor %}
+
+        function markerEvent(i) {
+            marker[i].addListener('click', function() { // マーカーをクリックしたとき
+                infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+            });
+        }
+
+        var options = {
+            imagePath: '/static/images/m'
+        };
+
+        var markerCluster = new MarkerClusterer(map, marker, options);
+
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2eoQ8kDmg_R8qgRcgTJzrXCws5guhM8A&callback=allMap"></script>
+
+{% endblock %}
+
