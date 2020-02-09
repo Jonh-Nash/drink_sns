@@ -144,8 +144,8 @@ class DiaryMap(LoginRequiredMixin, generic.ListView):
     diaries = Diary.objects.get
 
 def easyfunc(request):
-    username = 'kotaro'
-    password = 'a'
+    username = 'test'
+    password = 'test'
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)

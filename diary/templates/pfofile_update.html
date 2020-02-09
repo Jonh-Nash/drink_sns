@@ -21,7 +21,12 @@
                     </tbody>
                 </table>
                 {% csrf_token %}
-                <button type="submit" class="btn btn-success" >更新</button>
+
+                {% if user.username == 'test' %}
+                <button type="submit" class="btn btn-success disabled" disabled>testユーザーは更新できません。</button>
+                {% else %}
+                <button type="submit" class="btn btn-success">更新</button>
+                {% endif %}
             </form>
         </div>
     </div>
