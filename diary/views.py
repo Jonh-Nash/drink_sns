@@ -137,3 +137,7 @@ def wantfunc(request, pk):
         post.save()
         return redirect('diary:diary_detail', pk=pk)
 
+class DiaryMap(LoginRequiredMixin, generic.ListView):
+    model = Diary
+    template_name = 'diary_map.html'
+    diaries = Diary.objects.get
