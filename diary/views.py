@@ -1,5 +1,6 @@
 import logging
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect, resolve_url
 
@@ -141,3 +142,13 @@ class DiaryMap(LoginRequiredMixin, generic.ListView):
     model = Diary
     template_name = 'diary_map.html'
     diaries = Diary.objects.get
+
+def easyfunc(request):
+    username = 'kotaro'
+    password = 'a'
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect('diary:diary_alllist')
+    else:
+        return redirect('diary:index')
