@@ -23,7 +23,8 @@
 
         var map = new google.maps.Map(document.getElementById('map_all'), {
             zoom: 10,//ズームの調整
-            center: tokyo //上で設定した中心
+            center: tokyo, //上で設定した中心
+            scaleControl: true
         });
 
         var latlng = [];
@@ -43,7 +44,7 @@
         });
         infoWindow.push(infoWindow_x);
         markerEvent(i);
-        i++
+        i++;
         {% endfor %}
 
         function markerEvent(i) {
@@ -53,7 +54,7 @@
         }
 
         var options = {
-            imagePath: '/static/images/m'
+            imagePath: '/static/images/m',
         };
 
         var markerCluster = new MarkerClusterer(map, marker, options);
