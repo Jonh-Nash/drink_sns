@@ -1,7 +1,7 @@
 from .settings_common import *
 
 
-DEBUG = False
+DEBUG = True
 
 # 許可するホスト名のリスト
 ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')]
