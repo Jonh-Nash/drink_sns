@@ -23,7 +23,10 @@
                 </tr>
                 <tr>
                     <th>メールアドレス</th>
+                    {% if user.username == "testerplayer" %}
+                    {% else %}
                     <td>{{ user.email }}</td>
+                    {% endif %}
                 </tr>
                 <tr>
                     <th>姓</th>
@@ -35,7 +38,11 @@
                 </tr>
                 </tbody>
             </table>
+            {% if user.username == "testerplayer" %}
+            <a href="#" class="btn btn-primary ">テストユーザーは変更できません。</a>
+            {% else %}
             <a href="{% url 'diary:profile_update' user.pk %}" class="btn btn-primary ">変更</a>
+            {% endif %}
         </div>
     </div>
 </div>
