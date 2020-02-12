@@ -23,8 +23,8 @@ https://drink-sns.com/
 
 # 使用技術
 ## バックエンド
-- Python 3.4
-- Django 2.2
+- Python 3.7.4
+- Django 2.2.2
 - Nginx
 - Gunicorn
 - AWS(EC2, Route53, SES)
