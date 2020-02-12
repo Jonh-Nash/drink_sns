@@ -10,7 +10,7 @@ https://drink-sns.com/
 - 新規登録する場合は、メールアドレスが必要です。
 
 # 機能一覧
-- ユーザー登録機能（AWS ESEを使用）
+- ユーザー登録機能（AWS SESを使用）
 - ログイン、ログアウト機能
 - 位置情報投稿機能(Google Maps API/Geocoding API)
 - 位置情報のまとめ表示機能(MarkerClusterer)
