@@ -25,6 +25,7 @@ https://drink-sns.com/
 ## バックエンド
 - Python 3.7.4
 - Django 2.2.2
+- PostgreSQL 10
 - Nginx
 - Gunicorn
 - AWS(EC2, Route53, SES)
