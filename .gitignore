@@ -2,3 +2,4 @@
 .vscode/launch.json
 .vscode/setting.json
 *.pyc
+media/
