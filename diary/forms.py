@@ -51,7 +51,7 @@ class DiaryCreateForm(forms.ModelForm):
         fields = ('title', 'schedule', 'restaurant',  'station', 'number', 'photo1', 'photo2', 'photo3', 'lat', 'lng',)
         widgets = {
             'schedule': datetimepicker.DateTimePickerInput(
-                format='%Y-%m-%d %H:%M:%S',
+                format='%Y-%m-%d %H:%M',
                 options={
                     'locale': 'ja',
                     'dayViewHeaderFormat': 'YYYY年 MMMM',
